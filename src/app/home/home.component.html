@@ -16,11 +16,13 @@
   <h3>ngModel</h3>
   <p>
     Type your name:
-    <input
-      type="text"
-      (keyup)="onKeyUp($event)"
-      [value]="name"
-    >
+    <label>
+      <input
+        type="text"
+        (keyup)="onKeyUp($event)"
+        [value]="name"
+      >
+    </label>
     <!--      [(ngModel)]="name"-->
     <br><br>
   </p>

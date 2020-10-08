@@ -9,12 +9,14 @@ import { ListComponent } from './list/list.component';
 // other imports
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { InputComponent } from './input/input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ListComponent
+    ListComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
