@@ -1,0 +1,35 @@
+<!-- One-way data binding -->
+<!-- (click) is a click event; when element is clicked, function countClick() is called -->
+<!-- clickCounter is a property that displays data retrieved from the component -->
+
+<div class="welcome">
+  <ng-template [ngIf]="name === ''" [ngIfElse]="none">
+    <h1>Welcome!</h1>
+  </ng-template>
+
+  <ng-template #none>
+    <h1>Welcome {{ name }}!</h1>
+  </ng-template>
+</div>
+
+<div class="play-container" [ngClass]="setClasses()">
+  <h3>ngModel</h3>
+  <p>
+    Type your name:
+    <input
+      type="text"
+      (keyup)="onKeyUp($event)"
+      [value]="name"
+    >
+    <!--      [(ngModel)]="name"-->
+    <br><br>
+  </p>
+
+  <h3>One-way Data Binding [span]</h3>
+  <p>Counter 1: <span (click)="minusClick(1)">-</span> {{ clickCounter1 }}
+    <span (click)="plusClick(1)">+</span></p>
+  <p>Counter 2: <span (click)="minusClick(2)">-</span> {{ clickCounter2 }}
+    <span (click)="plusClick(2)">+</span></p>
+  <p>Sum: {{ clickCounter1 + clickCounter2 }} <i><small>(container turns yellow if sum is bigger than 10
+    [style binding])</small></i></p>
+</div>
