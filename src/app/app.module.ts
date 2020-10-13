@@ -3,20 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { ListComponent } from './list/list.component';
+import { HomeComponent } from './components/home/home.component';
+import { ListComponent } from './components/list/list.component';
+import { ApiKeyInterceptorService} from './services/api-key-interceptor.service';
 
 // other imports
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { InputComponent } from './input/input.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ListComponent,
-    InputComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +23,13 @@ import { InputComponent } from './input/input.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiKeyInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

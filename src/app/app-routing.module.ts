@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
+import {Input, NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // import components
-import { HomeComponent } from './home/home.component';
-import { ListComponent } from './list/list.component';
+import { HomeComponent } from './components/home/home.component';
+import { ListComponent } from './components/list/list.component';
 
 // add components as objects in the routes array
 const routes: Routes = [

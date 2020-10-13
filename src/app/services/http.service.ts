@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Joke} from './joke';
+import {Joke} from '../joke';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 

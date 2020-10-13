@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpService} from '../http.service';
+import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../../services/http.service';
 
+// Decorator adds metadata (e.g. pointer to template)
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -12,19 +13,17 @@ export class ListComponent implements OnInit {
 
   joke = '';
 
+  // HttpService as constructor tells injector to inject HttpService
   constructor(private http: HttpService) {
   }
 
-  // tslint:disable-next-line:typedef
   ngOnInit() {
     this.newJoke();
   }
 
-  // tslint:disable-next-line:typedef
   newJoke() {
     this.http.getJoke().subscribe(data => {
-        this.joke = data;
-      }
-    );
+      this.joke = data;
+    });
   }
 }

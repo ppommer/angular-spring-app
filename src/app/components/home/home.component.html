@@ -12,16 +12,24 @@
   </ng-template>
 </div>
 
-<div class="play-container" [ngClass]="setClasses()">
+<div class="play-container" [ngClass]="active() ? 'active' : 'inactive'">
   <h3>ngModel</h3>
   <p>
     Type your name:
+    <br><br>
+<!--    <label>-->
+<!--      <input-->
+<!--        #box-->
+<!--        (keyup)="onKeyUp(box.value)"-->
+<!--      >-->
+<!--    </label>-->
+<!--    <br>-->
     <label>
       <input
-        type="text"
-        (keyup)="onKeyUp($event)"
-        [value]="name"
-      >
+        #box
+        (keyup.enter)="onKeyUp(box.value)"
+        (blur)="onKeyUp(box.value)">
+      <i><small>(press enter or click outside the box to confirm)</small></i>
     </label>
     <!--      [(ngModel)]="name"-->
     <br><br>
@@ -32,6 +40,6 @@
     <span (click)="plusClick(1)">+</span></p>
   <p>Counter 2: <span (click)="minusClick(2)">-</span> {{ clickCounter2 }}
     <span (click)="plusClick(2)">+</span></p>
-  <p>Sum: {{ clickCounter1 + clickCounter2 }} <i><small>(container turns yellow if sum is bigger than 10
+  <p>Sum: {{ clickCounter1 + clickCounter2 | currency:'EUR'}} <i><small>(container turns yellow if sum is bigger than 10
     [style binding])</small></i></p>
 </div>
