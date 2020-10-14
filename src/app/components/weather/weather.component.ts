@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../../services/weather.service';
+
+enum WeatherData {
+  CITY,
+  DESCRIPTION,
+  TEMPERATURE,
+  FEELS_LIKE,
+  HUMIDITY
+}
 
 @Component({
   selector: 'app-weather',
@@ -7,9 +16,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeatherComponent implements OnInit {
 
-  constructor() { }
+  weather: string[];
+
+  CITY          = WeatherData.CITY;
+  DESCRIPTION   = WeatherData.DESCRIPTION;
+  TEMPERATURE   = WeatherData.TEMPERATURE;
+  FEELS_LIKE    = WeatherData.FEELS_LIKE;
+  HUMIDITY      = WeatherData.HUMIDITY;
+
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
+    this.newWeather();
   }
 
+  newWeather() {
+    this.weatherService.getWeather().subscribe(data => {
+      // TODO
+      // this.weather = data;
+    })
+  }
 }

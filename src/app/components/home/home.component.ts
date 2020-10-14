@@ -1,9 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-
-interface Classes {
-  active: boolean;
-  inactive: boolean;
-}
+import { Component, OnInit } from '@angular/core';
 
 enum Counters {
   FIRST_COUNTER = 'FIRST_COUNTER',
@@ -21,31 +16,41 @@ export class HomeComponent implements OnInit {
   clickCounter2 = 0;
   name = '';
 
-  constructor() { }
+  FIRST_COUNTER = Counters.FIRST_COUNTER;
+  SECOND_COUNTER = Counters.SECOND_COUNTER;
 
-  ngOnInit(): void { }
+  constructor() {
+  }
+
+  ngOnInit(): void {
+  }
 
   plusClick(counter: Counters) {
-    switch(counter) {
+    switch (counter) {
       case Counters.FIRST_COUNTER: {
-        this.clickCounter1 += 1;
+        this.clickCounter1++;
         break;
       }
       case Counters.SECOND_COUNTER: {
-        this.clickCounter2 += 1;
+        this.clickCounter2++;
         break;
       }
     }
   }
 
   minusClick(counter: Counters) {
-    if (counter === Counters.FIRST_COUNTER) {
-      if (this.clickCounter1 > 0) {
-        this.clickCounter1 -= 1;
+    switch (counter) {
+      case Counters.FIRST_COUNTER: {
+        if (this.clickCounter1 > 0) {
+          this.clickCounter1--;
+        }
+        break;
       }
-    } else if (counter === Counters.SECOND_COUNTER) {
-      if (this.clickCounter2 > 0) {
-        this.clickCounter2 -= 1;
+      case Counters.SECOND_COUNTER: {
+        if (this.clickCounter2 > 0) {
+          this.clickCounter2--;
+        }
+        break;
       }
     }
   }

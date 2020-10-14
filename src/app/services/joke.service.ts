@@ -7,7 +7,7 @@ import {map, tap} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class JokeService {
 
   constructor(private http: HttpClient) { }
 

@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 // import components
 import { HomeComponent } from './components/home/home.component';
-import { ListComponent } from './components/list/list.component';
+import { JokeComponent } from './components/joke/joke.component';
+import { WeatherComponent } from './components/weather/weather.component';
 
 // add components as objects in the routes array
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'list', component: ListComponent }
+  { path: 'joke', component: JokeComponent },
+  { path: 'weather', component: WeatherComponent }
 ];
 
 @NgModule({

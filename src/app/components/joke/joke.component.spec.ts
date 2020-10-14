@@ -1,37 +1,31 @@
-// TODO Vlad:
-//  Warum fdescribe?
-//  Cannot read property 'getJoke' of undefined
-
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListComponent } from './list.component';
-import { HttpService } from '../../services/http.service';
+import { JokeComponent } from './joke.component';
+import { JokeService } from '../../services/joke.service';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 
-// f = force, x = exclude
+// f = force, x = exclude TODO Warum fdescribe und nicht describe?
 fdescribe('ListComponent', () => {
-  let component: ListComponent;
-  let fixture: ComponentFixture<ListComponent>;
+  let component: JokeComponent;
+  let fixture: ComponentFixture<JokeComponent>;
 
   let httpServiceMock: any;
   const expectedStringData = 'expected-data'; // mocked API return
-  // Initialize httpService mock
+
+  // Initialize httpService mock and initialize mock function (jest)
   httpServiceMock = {
-    // Create mock function
     getJoke: jest.fn(() => of(expectedStringData))
   };
-  // Set mock function's return value
-  // httpServiceMock.getJoke.mockReturnValue(of(expectedStringData));
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       // Tested components
-      declarations: [ListComponent],
+      declarations: [JokeComponent],
       // Dependencies
       providers: [
         {
           // Required dependency
-          provide: HttpService,
+          provide: JokeService,
           // Substitute (mock)
           useValue: httpServiceMock
         }
@@ -41,7 +35,7 @@ fdescribe('ListComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListComponent);
+    fixture = TestBed.createComponent(JokeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
