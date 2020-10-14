@@ -1,5 +1,7 @@
+// TODO Vlad: Umgehen des Interceptors mittels HttpBackend ok?
+
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import {Joke} from '../joke';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
@@ -9,11 +11,15 @@ import {map, tap} from 'rxjs/operators';
 })
 export class JokeService {
 
-  constructor(private http: HttpClient) { }
+  private httpClient: HttpClient;
+
+  constructor(private handler: HttpBackend) {
+    this.httpClient = new HttpClient(handler);
+  }
 
   // tslint:disable-next-line:typedef
   getJoke(): Observable<string> {
-    return this.http.get<Joke>('https://api.chucknorris.io/jokes/random')
+    return this.httpClient.get<Joke>('https://api.chucknorris.io/jokes/random')
       .pipe(
         tap(console.log),
         map(result => {

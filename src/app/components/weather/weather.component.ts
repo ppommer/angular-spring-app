@@ -1,3 +1,5 @@
+// TODO Vlad: Datentyp zur Verarbeitung der WeatherData
+
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 
@@ -16,7 +18,7 @@ enum WeatherData {
 })
 export class WeatherComponent implements OnInit {
 
-  weather: string[];
+  weather: string;
 
   CITY          = WeatherData.CITY;
   DESCRIPTION   = WeatherData.DESCRIPTION;
@@ -32,8 +34,7 @@ export class WeatherComponent implements OnInit {
 
   newWeather() {
     this.weatherService.getWeather().subscribe(data => {
-      // TODO
-      // this.weather = data;
+      this.weather = data;
     })
   }
 }

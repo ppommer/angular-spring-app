@@ -1,3 +1,5 @@
+// TODO Vlad: Test so in Ordnung? | Warum fdescribe?
+
 import { TestBed } from '@angular/core/testing';
 
 import { HttpClient } from '@angular/common/http';
@@ -5,7 +7,6 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { Joke } from '../joke';
 import { JokeService } from './joke.service';
-
 
 describe('JokeService', () => {
 

@@ -1,3 +1,5 @@
+// TODO Vlad: Kann sich id ändern? Wenn ja, was tun?
+
 import {
   HttpEvent,
   HttpHandler,
@@ -11,7 +13,7 @@ const id = 'a0191a5d64339913c4c10d7fea9774ba';
 export const appid = `&appid=${ id }`;
 
 @Injectable()
-export class InterceptorService implements HttpInterceptor {
+export class ApiKeyInterceptorService implements HttpInterceptor {
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
