@@ -1,5 +1,3 @@
-// TODO Vlad: Kann sich id ändern? Wenn ja, was tun?
-
 import {
   HttpEvent,
   HttpHandler,
@@ -18,10 +16,12 @@ export class ApiKeyInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    if (!req.url.includes('openweather')) {
+      return next.handle(req);
+    }
     const newReq = req.clone({
       url: req.url + appid,
     });
-
     return next.handle(newReq);
   }
 }

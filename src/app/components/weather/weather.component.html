@@ -1,15 +1,12 @@
-<!-- TODO Vlad: Formatierung Wetterdaten -->
-
 <div class="welcome">
   <h1>Weather Data</h1>
 </div>
 
 <div class="play-container">
-  <h4>City: {{ weather }}</h4>
-<!--  <h4>City: {{ weather[CITY] }}</h4>-->
-<!--  <h4>Description: {{ weather[DESCRIPTION]}}</h4>-->
-<!--  <h4>Temperature: {{ weather[TEMPERATURE] }}</h4>-->
-<!--  <h4>Feels like: {{ weather[FEELS_LIKE] }}</h4>-->
-<!--  <h4>Humidity: {{ weather[HUMIDITY] }}</h4>-->
+  <h4>City: {{ weather.name }}</h4>
+  <h4>Description: {{ weather.weather[0].description }}</h4>
+  <h4>Temperature: {{ weather.main.temp | number:'.1-1' | temperature }}</h4>
+  <h4>Feels like: {{ weather.main.feels_like | number:'.1-1' | temperature }}</h4>
+  <h4>Humidity: {{ weather.main.humidity / 100 | percent }}</h4>
   <p><span (click)="newWeather()">UPDATE</span></p>
 </div>

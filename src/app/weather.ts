@@ -1,11 +1,15 @@
+export interface Description {
+  description: string;
+}
+
+export interface Main {
+  temp: number;
+  feels_like: number;
+  humidity: number;
+}
+
 export interface Weather {
   name: string;
-  weather: {
-    description: string;
-  }
-  main: {
-    temp: number;
-    feels_like: number;
-    humidity: number;
-  }
+  weather: Description[];
+  main: Main;
 }

@@ -4,7 +4,7 @@ import { JokeService } from '../../services/joke.service';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 
-// f = force, x = exclude TODO Warum fdescribe und nicht describe?
+// f = force, x = exclude
 fdescribe('ListComponent', () => {
   let component: JokeComponent;
   let fixture: ComponentFixture<JokeComponent>;
