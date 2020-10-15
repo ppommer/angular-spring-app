@@ -1,6 +1,9 @@
+// TODO Vlad:
+//  Check: next/prev
+//  Frage: Array speichern auch bei Seitenwechsel
+
 import { Component, OnInit } from '@angular/core';
 import { JokeService } from '../../services/joke.service';
-import { Joke } from '../../joke';
 
 // Decorator adds metadata (e.g. pointer to template)
 @Component({

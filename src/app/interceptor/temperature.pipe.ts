@@ -1,3 +1,5 @@
+// TODO: Pipe check
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({name: 'temperature'})

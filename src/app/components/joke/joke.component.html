@@ -1,14 +1,17 @@
+<!-- TODO Vlad: span1 / span2 ändern -->
+
 <div class="welcome">
   <h1>Joke Generator</h1>
 </div>
 
 <div class="play-container">
+  <p>
+    <span2 (click)="previousJoke()"><<</span2>&nbsp;
+    {{ jokeCounter }}/{{ maxJoke }}&nbsp;
+    <span2 (click)="nextJoke()">>></span2>
+  </p>
   <h4>{{ jokes[jokeCounter - 1] }}</h4>
   <p>
     <span1 (click)="newJoke()">GENERATE NEW JOKE</span1>
-  </p>
-  <p>
-    <span2 (click)="previousJoke()">PREVIOUS JOKE</span2>&nbsp;
-    <span2 (click)="nextJoke()">NEXT JOKE</span2>
   </p>
 </div>
