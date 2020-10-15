@@ -3,6 +3,12 @@
 </div>
 
 <div class="play-container">
-  <h4>{{ joke }}</h4>
-  <p><span (click)="newJoke()">GENERATE NEW JOKE</span></p>
+  <h4>{{ jokes[jokeCounter - 1] }}</h4>
+  <p>
+    <span1 (click)="newJoke()">GENERATE NEW JOKE</span1>
+  </p>
+  <p>
+    <span2 (click)="previousJoke()">PREVIOUS JOKE</span2>&nbsp;
+    <span2 (click)="nextJoke()">NEXT JOKE</span2>
+  </p>
 </div>

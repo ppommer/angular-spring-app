@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JokeService } from '../../services/joke.service';
+import { Joke } from '../../joke';
 
 // Decorator adds metadata (e.g. pointer to template)
 @Component({
@@ -11,10 +12,12 @@ import { JokeService } from '../../services/joke.service';
 
 export class JokeComponent implements OnInit {
 
-  joke = '';
+  jokes = [];
+  jokeCounter = 0;
+  maxJoke = 0;
 
   // JokeService as constructor tells injector to inject JokeService
-  constructor(private jokeService: JokeService) {}
+  constructor(private jokeService: JokeService) { }
 
   ngOnInit() {
     this.newJoke();
@@ -22,7 +25,21 @@ export class JokeComponent implements OnInit {
 
   newJoke() {
     this.jokeService.getJoke().subscribe(data => {
-      this.joke = data;
+      this.jokes.push(data);
+      this.maxJoke++;
+      this.jokeCounter = this.maxJoke;
     });
+  }
+
+  nextJoke() {
+    if (this.jokeCounter < this.maxJoke) {
+      this.jokeCounter++;
+    }
+  }
+
+  previousJoke() {
+    if (this.jokeCounter - 1 > 0) {
+      this.jokeCounter--;
+    }
   }
 }

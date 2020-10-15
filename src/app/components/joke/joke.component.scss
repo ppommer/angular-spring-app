@@ -1,6 +1,14 @@
-span {
+span1 {
   font-weight: bold;
   background: lightgray;
+  padding: .3em 1.6em;
+  cursor: pointer;
+}
+
+span2 {
+  font-size: 10pt;
+  font-weight: normal;
+  background: whitesmoke;
   padding: .3em .8em;
   cursor: pointer;
 }
