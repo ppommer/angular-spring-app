@@ -3,20 +3,14 @@
 <!-- router-outlet (this is where routed components are displayed within the template) -->
 
 <header>
-  <div class="container">
-    <a routerLink="/" class="logo">Chuck Norris App</a>
-    <nav>
-      <ul>
-        <li><a href="#" routerLink="/" style="color:orangered">Home</a></li>
-        <li><a href="#" routerLink="/joke" style="color:orangered">Jokes</a></li>
-        <li><a href="#" routerLink="/weather" style="color:orangered">Weather</a></li>
-      </ul>
-    </nav>
-  </div>
+  <a routerLink="/" class="logo">Chuck Norris App</a>
+  <nav>
+    <ul>
+      <li><a href="#" routerLink="/">Home</a></li>
+      <li><a href="#" routerLink="/joke">Jokes</a></li>
+      <li><a href="#" routerLink="/weather">Weather</a></li>
+    </ul>
+  </nav>
 </header>
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
-
-<!--<router-outlet></router-outlet>-->
+<router-outlet></router-outlet>

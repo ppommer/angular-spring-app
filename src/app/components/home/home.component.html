@@ -2,47 +2,36 @@
 <!-- (click) is a click event; when element is clicked, function countClick() is called -->
 <!-- clickCounter is a property that displays data retrieved from the component -->
 
-<div class="welcome">
-  <ng-template [ngIf]="name === ''" [ngIfElse]="none">
-    <h1>Welcome!</h1>
-  </ng-template>
+<div class="container">
 
-  <ng-template #none>
-    <h1>Welcome {{ name }}!</h1>
-  </ng-template>
-</div>
+  <section>
 
-<div class="play-container" [ngClass]="active() ? 'active' : 'inactive'">
-  <h3>ngModel</h3>
-  <p>
-    Type your name:
-    <br><br>
-<!--    <label>-->
-<!--      <input-->
-<!--        #box-->
-<!--        (keyup)="onKeyUp(box.value)"-->
-<!--      >-->
-<!--    </label>-->
-<!--    <br>-->
-    <label>
-      <input
-        #box
-        (keyup.enter)="onKeyUp(box.value)"
-        (blur)="onKeyUp(box.value)">
-      <i><small>(press enter or click outside the box to confirm)</small></i>
-    </label>
-    <!--      [(ngModel)]="name"-->
-    <br><br>
-  </p>
+    <img
+      src="../../../assets/logo.png"
+      alt="logo"
+      [ngClass]="active() ? 'active' : 'inactive'"
+    >
 
-  <h3>One-way Data Binding [span]</h3>
-  <p>Counter 1: <span (click)="minusClick(FIRST_COUNTER)">-</span> {{ clickCounter1 | currency: 'EUR' }}
-    <span (click)="plusClick(FIRST_COUNTER)">+</span>
-  </p>
-  <p>Counter 2: <span (click)="minusClick(SECOND_COUNTER)">-</span> {{ clickCounter2 | currency: 'EUR' }}
-    <span (click)="plusClick(SECOND_COUNTER)">+</span>
-  </p>
-  <p>Sum: {{ clickCounter1 + clickCounter2 | currency:'EUR'}}
-    <i><small>(container turns yellow if sum is bigger than 10 [style binding])</small></i>
-  </p>
+    <ng-template [ngIf]="name === ''" [ngIfElse]="none">
+      <h1>Welcome!</h1>
+    </ng-template>
+
+    <ng-template #none>
+      <h1>Welcome {{ name }}!</h1>
+    </ng-template>
+
+    <p>
+      Type your name:
+      <label>
+        <input
+          #box
+          (keyup)="onKeyUp(box.value)"
+          (keyup.enter)="onKeyUp(box.value)"
+          (blur)="onKeyUp(box.value)"
+        >
+      </label>
+    </p>
+
+  </section>
+
 </div>

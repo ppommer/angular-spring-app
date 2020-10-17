@@ -1,51 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
+@import url('http://fonts.googleapis.com/css?family=Montserrat:400,600');
 
-$primary: rgb(0, 0, 0);
+$primary: #24292E;
 
 body {
   margin: 0;
-  font-family: 'Courier New', 'sans-serif';
-  font-size: 18px;
+  font-family: 'Montserrat', 'sans-serif';
 }
 
 .container {
+  text-align: center;
   width: 80%;
   margin: 0 auto;
 }
 
-header {
-  background: $primary;
-  padding: 1em 0;
+.green-button {
+  background: #00CC80;
+  width: 50%;
+  display: block;
 
-  a {
-    color: white;
-    text-decoration: none;
-  }
-  a.logo {
-    font-weight: bold;
-  }
+  border-radius: 20px;
+  padding: .5em;
+  margin: 3% auto 7%;
 
-  nav {
-    float: right;
+  color: #FFF;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  text-shadow: 0 0;
 
-    ul {
-      list-style-type: none;
-      margin: 0;
-      display: flex;
-
-      li a {
-        padding: 1em;
-
-        &:hover {
-          background: lighten($primary, 20%);
-        }
-      }
-    }
-  }
+  box-shadow: 0 0 2px darkgrey;
 }
 
-h1 {
-  margin-top: 2em;
+.green-button:hover {
+  box-shadow: 0 0 15px darkgray;
 }

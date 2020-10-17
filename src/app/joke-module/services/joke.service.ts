@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpBackend } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 import {Joke} from '../joke';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
@@ -10,10 +10,12 @@ import {map, tap} from 'rxjs/operators';
 export class JokeService {
 
   private httpClient: HttpClient;
-
   constructor(private handler: HttpBackend) {
     this.httpClient = new HttpClient(handler);
   }
+
+  // TODO: Should work with Interceptor in separate module!
+  // constructor(private httpClient: HttpClient) { }
 
   getJoke(): Observable<string> {
     return this.httpClient.get<Joke>('https://api.chucknorris.io/jokes/random')

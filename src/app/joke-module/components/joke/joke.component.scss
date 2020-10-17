@@ -1,0 +1,17 @@
+.button {
+  font-size: 10pt;
+  font-weight: normal;
+  background: whitesmoke;
+  padding: .3em .8em;
+  cursor: pointer;
+  box-shadow: 0 0 2px darkgrey;
+}
+
+.button:hover {
+  box-shadow: 0 0 10px darkgray;
+}
+
+.joke {
+  font-style: italic;
+  font-weight: normal;
+}

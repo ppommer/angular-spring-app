@@ -1,0 +1,30 @@
+$primary: #24292E;
+
+header {
+  background: $primary;
+  padding: 1em 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  padding: 1em;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+a:hover:not(.logo) {
+  background: lighten($primary, 20%);
+}
+
+nav {
+  float: right;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+}

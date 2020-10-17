@@ -1,17 +1,17 @@
+// TODO: Interceptor soll nur im WeatherModule greifen
+
 // Modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { JokeModule } from './joke-module/joke.module';
 
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { JokeComponent } from './components/joke/joke.component';
-
-// Pipes
-import { InterceptorModule } from './interceptor/interceptor.module';
+import { ApiKeyInterceptorService } from './weather-module/services/api-key-interceptor.service';
 
 
 
@@ -19,8 +19,7 @@ import { InterceptorModule } from './interceptor/interceptor.module';
   // declaration of components/directives/pipes to be used in this module
   declarations: [
     AppComponent,
-    HomeComponent,
-    JokeComponent
+    HomeComponent
   ],
   // import of external modules
   imports: [
@@ -28,12 +27,18 @@ import { InterceptorModule } from './interceptor/interceptor.module';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    InterceptorModule
+    JokeModule
   ],
   // export of components/directives/pipes to be used in another module
   exports: [],
   // injectables required for the module
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiKeyInterceptorService,
+      multi: true
+    }
+  ],
   // application's root component
   bootstrap: [AppComponent]
 })

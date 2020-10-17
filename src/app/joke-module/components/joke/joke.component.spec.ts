@@ -47,13 +47,13 @@ fdescribe('ListComponent', () => {
   it('should init', () => {
     component.ngOnInit();
     expect(httpServiceMock.getJoke).toHaveBeenCalled();
-    expect(component.joke).toBe(expectedStringData);
+    expect(component.jokes[0]).toBe(expectedStringData);
   });
 
   it('should update joke on newJoke', () => {
     component.newJoke();
     expect(httpServiceMock.getJoke).toHaveBeenCalled();
-    expect(component.joke).toBe(expectedStringData);
+    expect(component.jokes[0]).toBe(expectedStringData);
     fixture.detectChanges();
     expect(fixture.debugElement.query(By.css('h4')).nativeElement.textContent).toBe(expectedStringData);
   });

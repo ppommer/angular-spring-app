@@ -1,0 +1,25 @@
+<div class="container">
+
+  <br>
+
+  <h1>Joke Generator</h1>
+
+  <br>
+
+  <p>
+    <span class="green-button" (click)="newJoke()">GENERATE NEW JOKE</span>
+  </p>
+
+  <p class="joke">
+    "{{ jokes[jokeCounter - 1] }}"
+  </p>
+
+  <br>
+
+  <p>
+    <span class="button" (click)="previousJoke()"><<</span>&nbsp;
+    {{ jokeCounter }}/{{ maxJoke }}&nbsp;
+    <span class="button" (click)="nextJoke()">>></span>
+  </p>
+
+</div>

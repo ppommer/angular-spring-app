@@ -2,7 +2,7 @@
 
 import { WeatherService } from './weather.service';
 import { of } from 'rxjs';
-import { Weather } from '../../weather';
+import { Weather } from '../weather';
 
 const dummyWeather: Weather = {
   name: 'New York',
