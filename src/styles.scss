@@ -34,5 +34,18 @@ body {
 }
 
 .green-button:hover {
+  background: #00ae71;
   box-shadow: 0 0 15px darkgray;
+}
+
+@media only screen and (min-width: 875px) {
+
+  .green-button {
+    width: 40%;
+  }
+
+  .container {
+    width: 60%;
+    margin: 0 auto;
+  }
 }

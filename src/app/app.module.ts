@@ -1,5 +1,3 @@
-// TODO: Interceptor soll nur im WeatherModule greifen
-
 // Modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
