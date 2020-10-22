@@ -1,5 +1,3 @@
-// TODO: Zweiter Test mit TestBed und Interception
-
 import { WeatherService } from './weather.service';
 import { of } from 'rxjs';
 import { Weather } from '../weather';

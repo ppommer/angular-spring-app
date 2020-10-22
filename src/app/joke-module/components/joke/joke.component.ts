@@ -1,7 +1,3 @@
-// TODO Vlad:
-//  Check: next/prev
-//  Frage: Array speichern auch bei Seitenwechsel
-
 import { Component, OnInit } from '@angular/core';
 import { JokeService } from '../../services/joke.service';
 
@@ -17,32 +13,39 @@ export class JokeComponent implements OnInit {
 
   jokes = [];
   jokeCounter = 0;
-  maxJoke = 0;
 
   // JokeService as constructor tells injector to inject JokeService
   constructor(private jokeService: JokeService) { }
 
   ngOnInit() {
-    this.newJoke();
+    if (this.jokeService.getJokes().length == 0) {
+      this.newJoke();
+    } else {
+      this.jokes = this.jokeService.getJokes();
+      this.jokeCounter = this.jokeService.getJokeCounter();
+    }
   }
 
   newJoke() {
     this.jokeService.getJoke().subscribe(data => {
       this.jokes.push(data);
-      this.maxJoke++;
-      this.jokeCounter = this.maxJoke;
-    });
+      this.jokeCounter = this.jokes.length;
+      this.jokeService.setJokes(this.jokes);
+      this.jokeService.setJokeCounter(this.jokeCounter);
+    })
   }
 
   nextJoke() {
-    if (this.jokeCounter < this.maxJoke) {
+    if (this.jokeCounter < this.jokes.length) {
       this.jokeCounter++;
+      this.jokeService.setJokeCounter(this.jokeCounter);
     }
   }
 
   previousJoke() {
     if (this.jokeCounter - 1 > 0) {
       this.jokeCounter--;
+      this.jokeService.setJokeCounter(this.jokeCounter);
     }
   }
 }
