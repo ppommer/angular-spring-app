@@ -1,0 +1,33 @@
+$primary: #24292E;
+
+input {
+  padding: .5em;
+  margin: 1em;
+  font-family: 'Montserrat', 'sans-serif';
+  width: 20em;
+}
+
+table {
+  margin: 1.5em auto;
+}
+
+.alert {
+  color: red;
+  font-size: smaller;
+  margin: 0;
+}
+
+.login {
+  width: 30%;
+  margin: 1.5em auto;
+}
+
+.subtext {
+  font-size: smaller;
+}
+
+.subtext span {
+  color: #00C2FF;
+  cursor: pointer;
+  text-decoration: underline;
+}

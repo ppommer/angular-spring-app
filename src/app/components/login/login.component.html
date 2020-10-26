@@ -1,0 +1,45 @@
+<div class="container">
+
+  <h1>Login</h1>
+
+  <ng-template [ngIf]="invalid">
+    <div class="alert">
+      Username and/or password invalid.
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="wrongAuthentication">
+    <div class="alert">
+      Wrong username and/or password.
+    </div>
+  </ng-template>
+
+  <table>
+    <tr>
+      <td>
+        Username:
+      </td>
+      <td>
+        <label>
+          <input [(ngModel)]="username">
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Password:
+      </td>
+      <td>
+        <label>
+          <input type="password" [(ngModel)]="password">
+        </label>
+      </td>
+    </tr>
+  </table>
+
+  <span class="green-button login" (click)="login()">Sign in</span>
+  <div class="subtext">
+    Not registered yet? Click <span (click)="register()">here</span> to register.
+  </div>
+
+</div>

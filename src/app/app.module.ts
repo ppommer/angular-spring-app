@@ -9,15 +9,18 @@ import { JokeModule } from './joke-module/joke.module';
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 import { ApiKeyInterceptorService } from './weather-module/services/api-key-interceptor.service';
-
 
 
 @NgModule({
   // declaration of components/directives/pipes to be used in this module
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   // import of external modules
   imports: [
@@ -40,4 +43,4 @@ import { ApiKeyInterceptorService } from './weather-module/services/api-key-inte
   // application's root component
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

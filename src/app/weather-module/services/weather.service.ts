@@ -1,4 +1,4 @@
-import { Injectable, SkipSelf } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Weather } from '../weather';
 import { Observable } from 'rxjs';

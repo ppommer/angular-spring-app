@@ -1,0 +1,46 @@
+<div class="container">
+
+  <h1>Registration</h1>
+
+  <ng-template [ngIf]="alreadyExists">
+    <div class="alert">
+      Username already exists. Please choose another one.
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="invalid">
+    <div class="alert">
+      Username and/or password invalid.
+    </div>
+  </ng-template>
+
+  <table>
+    <tr>
+      <td>
+        Username:
+      </td>
+      <td>
+        <label>
+          <input [(ngModel)]="username">
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Password:
+      </td>
+      <td>
+        <label>
+          <input type="password" [(ngModel)]="password">
+        </label>
+      </td>
+    </tr>
+  </table>
+
+  <span class="green-button register" (click)="register()">Register</span>
+
+  <div class="subtext">
+    Already registered? Click <span (click)="login()">here</span> to sign in.
+  </div>
+
+</div>

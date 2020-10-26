@@ -20,6 +20,6 @@ export class WeatherComponent implements OnInit {
   newWeather() {
     this.weatherService.getWeather().subscribe(data => {
       this.weather = data;
-    })
+    });
   }
 }

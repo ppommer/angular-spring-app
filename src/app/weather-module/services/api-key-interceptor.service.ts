@@ -17,10 +17,13 @@ export class ApiKeyInterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
 
-    /** Not needed as joke-service runs as HttpBackend */
-    // if (!req.url.includes('openweather')) {
-    //   return next.handle(req);
-    // }
+    /**
+     * Not needed for joke-service as it runs as HttpBackend
+     * Needed for auth-service
+     */
+    if (!req.url.includes('openweather')) {
+      return next.handle(req);
+    }
 
     const newReq = req.clone({
       url: req.url + appid,
