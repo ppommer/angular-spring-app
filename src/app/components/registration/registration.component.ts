@@ -16,6 +16,7 @@ export class RegistrationComponent implements OnInit {
   id: string;
   username: string;
   password: string;
+  confirmPassword: string;
   user: User;
 
   alreadyExists = false;
