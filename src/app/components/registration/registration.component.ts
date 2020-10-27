@@ -1,10 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { AuthService } from "../../services/auth.service";
-import { User } from "../../model/User";
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../model/User';
 import { v4 as uuid } from 'uuid';
+import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 
+export function equalValueValidator(targetKey: string, toMatchKey: string): ValidatorFn {
+  return (group: FormGroup): { [key: string]: any } => {
+    const target = group.controls[targetKey];
+    const toMatch = group.controls[toMatchKey];
+    if (target.touched && toMatch.touched) {
+      const isMatch = target.value === toMatch.value;
+      // set equal value error on dirty controls
+      if (!isMatch && target.valid && toMatch.valid) {
+        toMatch.setErrors({ equalValue: targetKey });
+        const message = targetKey + ' != ' + toMatchKey;
+        return { 'equalValue': message };
+      }
+      if (isMatch && toMatch.hasError('equalValue')) {
+        toMatch.setErrors(null);
+      }
+    }
+
+    return null;
+  };
+}
 
 @Component({
   selector: 'app-registration',
@@ -13,39 +34,62 @@ import { v4 as uuid } from 'uuid';
 })
 export class RegistrationComponent implements OnInit {
 
-  id: string;
-  username: string;
-  password: string;
-  confirmPassword: string;
+  registrationForm: FormGroup;
+
   user: User;
+  id: string;
 
+  hide1 = true;
+  hide2 = true;
   alreadyExists = false;
-  invalid = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder) {
 
-  ngOnInit(): void { }
+    this.registrationForm = this.formBuilder.group({
+        username: ['', [
+          Validators.required,
+          Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,4}')
+        ]],
+        password: ['', [
+          Validators.required,
+          Validators.minLength(8)
+        ]],
+        confirmPassword: ['', [
+          Validators.required,
+          Validators.minLength(8)
+        ]]
+      },
+      { validator: equalValueValidator('password', 'confirmPassword') }
+    );
+  }
+
+  ngOnInit(): void {}
 
   register() {
-    this.user = {
-      id: uuid(),
-      username: this.username,
-      password: this.password
-    };
 
-    if (this.user.username && this.user.password) {
+    if (
+      !this.registrationForm.get('password').errors &&
+      !this.registrationForm.get('username').errors &&
+      !this.registrationForm.get('confirmPassword').errors
+    ) {
+
+      this.user = {
+        id: uuid(),
+        username: this.registrationForm.get('username').value,
+        password: this.registrationForm.get('password').value
+      };
+
       this.authService.register(this.user).subscribe(data => {
         if (data.alreadyExists) {
           this.alreadyExists = true;
-          this.username = '';
-          this.password = '';
         } else {
           this.router.navigate(['/login']);
-          window.alert("Registration successful. Please sign in.");
+          window.alert('Registration successful. Please sign in.');
         }
       });
-    } else {
-      this.invalid = true;
     }
   }
 

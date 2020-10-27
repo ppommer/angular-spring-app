@@ -8,52 +8,79 @@
     </div>
   </ng-template>
 
-  <ng-template [ngIf]="invalid">
-    <div class="alert">
-      Username and/or password invalid.
-    </div>
-  </ng-template>
+  <form [formGroup]="registrationForm">
 
-  <table>
-    <tr>
-      <td>
-        Username:
-      </td>
-      <td>
-        <label>
-          <input
-            type="email"
-            placeholder="Enter username"
-            [(ngModel)]="username">
-        </label>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Password:
-      </td>
-      <td>
-        <label>
-          <input
-            type="password"
-            placeholder="Enter password"
-            [(ngModel)]="password">
-        </label>
-      </td>
-    </tr>
-    <tr>
-      <td>
-      </td>
-      <td>
-        <label>
-          <input
-            type="password"
-            placeholder="Confirm password"
-            [(ngModel)]="confirmPassword">
-        </label>
-      </td>
-    </tr>
-  </table>
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter email address</mat-label>
+        <input
+          matInput
+          formControlName="username"
+          required
+        >
+        <mat-error>
+          Please enter a valid email address
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter password</mat-label>
+        <input
+          matInput
+          required
+          formControlName="password"
+          [type]="hide1 ? 'password' : 'text'"
+        >
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide1 = !hide1"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide1"
+        >
+          <mat-icon>
+            {{ hide1 ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+
+        <mat-error>
+          Password must have at least 8 characters.
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm password</mat-label>
+        <input
+          matInput
+          required
+          formControlName="confirmPassword"
+          [type]="hide2 ? 'password' : 'text'"
+        >
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide2 = !hide2"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide2"
+        >
+          <mat-icon>
+            {{ hide2 ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+
+        <mat-error>
+          Those passwords didn't match. Try again.
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+  </form>
 
   <span class="green-button register" (click)="register()">Register</span>
 

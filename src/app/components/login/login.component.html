@@ -2,46 +2,57 @@
 
   <h1>Login</h1>
 
-  <ng-template [ngIf]="invalid">
-    <div class="alert">
-      Username and/or password invalid.
-    </div>
-  </ng-template>
-
   <ng-template [ngIf]="wrongAuthentication">
     <div class="alert">
       Wrong username and/or password.
     </div>
   </ng-template>
 
-  <table>
-    <tr>
-      <td>
-        Username:
-      </td>
-      <td>
-        <label>
-          <input
-            type="email"
-            placeholder="Enter username"
-            [(ngModel)]="username">
-        </label>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Password:
-      </td>
-      <td>
-        <label>
-          <input
-            type="password"
-            placeholder="Enter password"
-            [(ngModel)]="password">
-        </label>
-      </td>
-    </tr>
-  </table>
+  <form [formGroup]="loginForm">
+
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter email address</mat-label>
+        <input
+          matInput
+          formControlName="username"
+          required
+        >
+        <mat-error>
+          Please enter a valid email address
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter password</mat-label>
+        <input
+          matInput
+          required
+          formControlName="password"
+          [type]="hide ? 'password' : 'text'"
+        >
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>
+            {{ hide ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+
+        <mat-error>
+          Password must have at least 8 characters.
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+  </form>
 
   <span class="green-button login" (click)="login()">Sign in</span>
   <div class="subtext">

@@ -10,10 +10,16 @@
     "{{ jokes[jokeCounter - 1] }}"
   </p>
 
-  <p>
-    <span class="button" (click)="previousJoke()"><<</span>&nbsp;
+  <p class="grey-buttons">
+    <span
+      class="button"
+      (click)="previousJoke()"
+    ><<</span>&nbsp;
     {{ jokeCounter }}/{{ jokes.length }}&nbsp;
-    <span class="button" (click)="nextJoke()">>></span>
+    <span
+      class="button"
+      (click)="nextJoke()"
+    >>></span>
   </p>
 
 </div>

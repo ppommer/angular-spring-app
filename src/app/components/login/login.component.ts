@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../services/auth.service";
-import { Router } from "@angular/router";
-import { User } from "../../model/User";
-
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { User } from '../../model/User';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,41 +12,54 @@ import { User } from "../../model/User";
 })
 export class LoginComponent implements OnInit {
 
-  username: string;
-  password: string;
-  user: User;
+  loginForm: FormGroup;
 
-  invalid = false;
+  user: User;
+  id: string;
+
+  hide = true;
   wrongAuthentication = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder) {
 
-  ngOnInit(): void { }
+    this.loginForm = this.formBuilder.group({
+      username: ['', [
+        Validators.required,
+        Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,4}')
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8)
+      ]]
+    });
+  }
+
+  ngOnInit(): void {}
 
   login() {
-    this.user = {
-      id: '',
-      username: this.username,
-      password: this.password
-    };
 
-    if (this.user.username && this.user.password) {
+    if (
+      !this.loginForm.get('username').errors &&
+      !this.loginForm.get('password').errors
+    ) {
+
+      this.user = {
+        id: '',
+        username: this.loginForm.get('username').value,
+        password: this.loginForm.get('password').value
+      };
+
       this.authService.login(this.user).subscribe(data => {
         if (data.authenticated) {
           this.authService.loggedIn = true;
           this.router.navigate(['/home']);
         } else {
-          this.username = '';
-          this.password = '';
-          this.invalid = false;
           this.wrongAuthentication = true;
         }
       });
-    } else {
-      this.username = '';
-      this.password = '';
-      this.wrongAuthentication = false;
-      this.invalid = true;
     }
   }
 
