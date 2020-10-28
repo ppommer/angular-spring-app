@@ -1,27 +1,30 @@
-# AngularApp
+# Angular Spring App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4 and [Spring Boot](https://spring.io/) version 2.3.4.
 
-## Development server
+## Run the App
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` in the angular-spring-app CLI to start the angular frontend. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Run DemoApplication.java in the spring-app project to start the backend. You can use [Postman](https://www.postman.com/) to interact with the server via port 8080.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Demo
 
-## Build
+![](src/assets/documentation/recording_hd.gif)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Components
 
-## Running unit tests
+### 1. Login and Registration
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The login is the default page. An AuthGuard locks all other pages until the user has logged in. Prior to the initial login the user has to register.
 
-## Running end-to-end tests
+Login                      |  Registration
+:-------------------------:|:-------------------------:
+![](src/assets/documentation/Login.png)  |  ![](src/assets/documentation/Registration.png)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Validators are used to perform sanity checks and ensure the right format for both the username and the password.
 
-## Further help
+Validators                 |
+:-------------------------:|
+![](src/assets/documentation/Registration_Validators.png)  |
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
