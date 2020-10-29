@@ -2,13 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4 and [Spring Boot](https://spring.io/) version 2.3.4.
 
-#### Demo
+## Demo
 
 ![](src/assets/documentation/recording_hd.gif)
 
 ## Components
 
-#### Login and Registration
+### Login and Registration
 
 Before using the app, the user has to register. A UUID is created and added to a JSON file which is then sent to the Spring backend by the authentication service via HTTP POST.
 
@@ -27,7 +27,7 @@ Login                                    |  Registration                        
 ![](src/assets/documentation/Login.png)  |  ![](src/assets/documentation/Registration_Input.png) | ![](src/assets/documentation/Registration_Validators.png)
 
 
-#### Home, Jokes and Weather
+### Home, Jokes and Weather
 
 The home component displays a simple user input and makes use of basic Angular directives like ngClass and ngIf.
 When the user enters a string into the mask, ngClass selects the *@keyframes move* CSS property to let the Chuck Norris image swing up and down.
