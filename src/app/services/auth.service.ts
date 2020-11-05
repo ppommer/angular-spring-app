@@ -5,9 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from '../model/User';
 import { AddRequest } from '../model/AddRequest';
 import { AddResponse } from '../model/AddResponse';
-import { AuthRequest } from '../model/AuthRequest';
 import { AuthResponse } from '../model/AuthResponse';
-import { Weather } from '../weather-module/Weather';
 
 
 @Injectable({
