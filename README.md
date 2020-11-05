@@ -39,8 +39,8 @@ The received joke is saved in an array placed in the joke service to conserve it
 
 
 The weather component as well as the weather service are placed into a separate module to enable **lazy-loading**.
-It fetches current weather data of Munich from the [Open Weather API](https://openweathermap.org/api).
-A HTTP interceptor adds an app id to the URL. Pipes present the data in the right format.
+The weather service sends an API request to the Spring backend which validates the authorization field in the HTTP header added by an HTTP interceptor.
+After validation, the backend fetches current weather data of Munich from the [Open Weather API](https://openweathermap.org/api).
 
 Home                                    |  Jokes                                   | Weather
 :--------------------------------------:|:----------------------------------------:|:------------------------------------------:

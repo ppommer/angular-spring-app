@@ -26,6 +26,15 @@ mat-form-field {
   background: #0386c1;
 }
 
+.register:focus {
+  background: #0399dd;
+}
+
+.register:active {
+  background: #046c9b;
+  box-shadow: 0 0 20px darkgray;
+}
+
 .subtext {
   font-size: smaller;
 }

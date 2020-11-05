@@ -3,7 +3,8 @@
 $primary: #24292E;
 
 * {
-  font-family: 'Montserrat', 'sans-serif'
+  font-family: 'Montserrat', 'sans-serif';
+  outline: none;
 }
 
 body {
@@ -41,6 +42,10 @@ h1 {
 .green-button:hover {
   background: #00ae71;
   box-shadow: 0 0 15px darkgray;
+}
+
+.green-button:focus {
+  background: #01bc76;
 }
 
 @media only screen and (min-width: 875px) {

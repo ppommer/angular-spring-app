@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { User } from '../../model/User';
-import { v4 as uuid } from 'uuid';
+import { AddRequest } from '../../model/AddRequest';
 import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 
@@ -11,7 +10,6 @@ export function equalValueValidator(targetKey: string, toMatchKey: string): Vali
     const target = group.controls[targetKey];
     const toMatch = group.controls[toMatchKey];
     if (target.touched && toMatch.touched) {
-      // set equal value error on dirty controls
       if (
         target.value != toMatch.value &&
         target.valid && toMatch.valid
@@ -32,7 +30,7 @@ export class RegistrationComponent implements OnInit {
 
   registrationForm: FormGroup;
 
-  user: User;
+  addRequest: AddRequest;
   id: string;
 
   hide1 = true;
@@ -72,13 +70,12 @@ export class RegistrationComponent implements OnInit {
       !this.registrationForm.get('confirmPassword').errors
     ) {
 
-      this.user = {
-        id: uuid(),
+      this.addRequest = {
         username: this.registrationForm.get('username').value,
         password: this.registrationForm.get('password').value
       };
 
-      this.authService.register(this.user).subscribe(data => {
+      this.authService.register(this.addRequest).subscribe(data => {
         if (data.alreadyExists) {
           this.alreadyExists = true;
         } else {

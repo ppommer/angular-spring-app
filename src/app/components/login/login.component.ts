@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { User } from '../../model/User';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../../model/User';
 
 
 @Component({
@@ -47,13 +47,13 @@ export class LoginComponent implements OnInit {
     ) {
 
       this.user = {
-        id: '',
         username: this.loginForm.get('username').value,
         password: this.loginForm.get('password').value
       };
 
       this.authService.login(this.user).subscribe(data => {
         if (data.authenticated) {
+          this.authService.activeUserId = data.id;
           this.authService.loggedIn = true;
           this.router.navigate(['/home']);
         } else {

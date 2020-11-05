@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service // alternatively "@Component" -> instantiates bean
 public class UserService {
 
@@ -17,9 +18,11 @@ public class UserService {
   private final UserDao userDao;
 
   @Autowired // injecting in the actual constructor (interface UserDao)
-  public UserService(@Qualifier("fakeDao") UserDao userDao) {
+  public UserService(
+    @Qualifier("fakeDao") UserDao userDao) {
     this.userDao = userDao;
   }
+
 
   public AddResponse addUser(User user) {
     return userDao.insertUser(user);
@@ -30,7 +33,7 @@ public class UserService {
   }
 
   public AuthResponse getAuthResponse(User user) {
-    return userDao.selectAuthResponse(user);
+    return userDao.createAuthResponse(user);
   }
 
 }

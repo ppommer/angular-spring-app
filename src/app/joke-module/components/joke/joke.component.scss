@@ -16,6 +16,16 @@
   box-shadow: 0 0 10px darkgray;
 }
 
+.button:active {
+  background: #c3c3c3;
+  box-shadow: 0 0 15px darkgray;
+}
+
+.green-button:active {
+  background: #006d46;
+  box-shadow: 0 0 20px darkgray;
+}
+
 .joke {
   font-style: italic;
   font-weight: normal;

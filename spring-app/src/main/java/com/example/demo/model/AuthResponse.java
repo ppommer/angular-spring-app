@@ -2,22 +2,24 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.UUID;
+
 public class AuthResponse {
 
-  private final String username;
+  private final UUID id;
   private final boolean authenticated;
 
-  public AuthResponse(@JsonProperty("username") String username,
+  public AuthResponse(@JsonProperty("id") UUID id,
                       @JsonProperty("authenticated") boolean authenticated) {
-    this.username = username;
+    this.id = id;
     this.authenticated = authenticated;
   }
 
-  public String getUsername() {
-    return username;
+  public UUID getId() {
+    return this.id;
   }
 
   public boolean isAuthenticated() {
-    return authenticated;
+    return this.authenticated;
   }
 }

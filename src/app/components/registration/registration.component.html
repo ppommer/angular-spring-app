@@ -1,4 +1,7 @@
-<div class="container">
+<div
+  class="container"
+  (keyup.enter)="register()"
+>
 
   <h1>Registration</h1>
 
@@ -13,11 +16,14 @@
     <div class="example-container">
       <mat-form-field appearance="fill">
         <mat-label>Enter email address</mat-label>
-        <input
-          matInput
-          formControlName="username"
-          required
-        >
+        <label>
+          <input
+            matInput
+            formControlName="username"
+            required
+            [tabIndex]="1"
+          >
+        </label>
         <mat-error>
           Please enter a valid email address
         </mat-error>
@@ -28,18 +34,24 @@
     <div class="example-container">
       <mat-form-field appearance="fill">
         <mat-label>Enter password</mat-label>
-        <input
-          matInput
-          required
-          formControlName="password"
-          [type]="hide1 ? 'password' : 'text'"
-        >
+        <label>
+          <input
+            matInput
+            required
+            formControlName="password"
+            [type]="hide1 ? 'password' : 'text'"
+            [tabIndex]="2"
+          >
+        </label>
         <button
+          type="button"
           mat-icon-button
           matSuffix
           (click)="hide1 = !hide1"
           [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide1"
+          [tabIndex]="-1"
+          [disabled]="registrationForm.get('password').value == ''"
         >
           <mat-icon>
             {{ hide1 ? 'visibility_off' : 'visibility' }}
@@ -56,18 +68,24 @@
     <div class="example-container">
       <mat-form-field appearance="fill">
         <mat-label>Confirm password</mat-label>
-        <input
-          matInput
-          required
-          formControlName="confirmPassword"
-          [type]="hide2 ? 'password' : 'text'"
-        >
+        <label>
+          <input
+            matInput
+            required
+            formControlName="confirmPassword"
+            [type]="hide2 ? 'password' : 'text'"
+            [tabIndex]="3"
+          >
+        </label>
         <button
+          type="button"
           mat-icon-button
           matSuffix
           (click)="hide2 = !hide2"
           [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide2"
+          [tabIndex]="-1"
+          [disabled]="registrationForm.get('confirmPassword').value == ''"
         >
           <mat-icon>
             {{ hide2 ? 'visibility_off' : 'visibility' }}
@@ -82,7 +100,11 @@
     </div>
   </form>
 
-  <span class="green-button register" (click)="register()">Register</span>
+  <span
+    class="green-button register"
+    (click)="register()"
+    [tabIndex]="4"
+  >Register</span>
 
   <div class="subtext">
     Already registered? Click <span (click)="login()">here</span> to sign in.

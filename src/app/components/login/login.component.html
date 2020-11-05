@@ -1,4 +1,7 @@
-<div class="container">
+<div
+  class="container"
+  (keyup.enter)="login()"
+>
 
   <h1>Login</h1>
 
@@ -13,11 +16,14 @@
     <div class="example-container">
       <mat-form-field appearance="fill">
         <mat-label>Enter email address</mat-label>
-        <input
-          matInput
-          formControlName="username"
-          required
-        >
+        <label>
+          <input
+            matInput
+            formControlName="username"
+            required
+            [tabIndex]="1"
+          >
+        </label>
         <mat-error>
           Please enter a valid email address
         </mat-error>
@@ -28,18 +34,24 @@
     <div class="example-container">
       <mat-form-field appearance="fill">
         <mat-label>Enter password</mat-label>
-        <input
-          matInput
-          required
-          formControlName="password"
-          [type]="hide ? 'password' : 'text'"
-        >
+        <label>
+          <input
+            matInput
+            required
+            formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+            [tabIndex]="2"
+          >
+        </label>
         <button
+          type="button"
           mat-icon-button
           matSuffix
           (click)="hide = !hide"
           [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide"
+          [tabIndex]="-1"
+          [disabled]="loginForm.get('password').value == ''"
         >
           <mat-icon>
             {{ hide ? 'visibility_off' : 'visibility' }}
@@ -54,7 +66,11 @@
     </div>
   </form>
 
-  <span class="green-button login" (click)="login()">Sign in</span>
+  <span
+    class="green-button login"
+    (click)="login()"
+    [tabIndex]="3"
+  >Sign in</span>
   <div class="subtext">
     Not registered yet? Click <span (click)="register()">here</span> to register.
   </div>

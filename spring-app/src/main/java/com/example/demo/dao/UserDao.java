@@ -5,6 +5,7 @@ import com.example.demo.model.AuthResponse;
 import com.example.demo.model.User;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface UserDao {
 
@@ -12,5 +13,7 @@ public interface UserDao {
 
   List<User> selectAllUsers();
 
-  AuthResponse selectAuthResponse(User user);
+  AuthResponse createAuthResponse(User user);
+
+  int authenticateUser(UUID id);
 }

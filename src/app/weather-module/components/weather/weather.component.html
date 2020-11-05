@@ -6,12 +6,15 @@
 
 <div class="blue-container">
 
-  <ul class="weather">
+  <ul *ngIf="weather" class="weather">
     <li>City: {{ weather.name }}</li>
     <li>Description: {{ weather.weather[0].description }}</li>
     <li>Temperature: {{ weather.main.temp | number:'.1-1' | temperature }}</li>
     <li>Feels like: {{ weather.main.feels_like | number:'.1-1' | temperature }}</li>
-    <li>Humidity: {{ weather.main.humidity / 100 | percent }}</li><br>
+    <li>Humidity: {{ weather.main.humidity / 100 | percent }}</li>
+  </ul>
+
+  <ul class="weather">
     <li><span class="green-button" (click)="newWeather()">UPDATE</span></li>
   </ul>
 

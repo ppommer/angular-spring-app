@@ -3,12 +3,33 @@
 <!-- router-outlet (this is where routed components are displayed within the template) -->
 
 <header>
-  <a routerLink="/" class="logo">Angular Spring App</a>
+  <a
+    routerLink="/"
+    class="logo"
+    [tabIndex]="-1"
+  >Angular Spring App</a>
   <nav>
     <ul>
-      <li><a href="#" routerLink="/home">Home</a></li>
-      <li><a href="#" routerLink="/jokes">Jokes</a></li>
-      <li><a href="#" routerLink="/weather">Weather</a></li>
+      <li>
+        <a
+          href="#"
+          routerLink="/home"
+          [tabIndex]="-1"
+        >Home</a>
+      </li>
+      <li>
+        <a
+          href="#"
+          routerLink="/jokes"
+          [tabIndex]="-1"
+        >Jokes</a>
+      </li>
+      <li>
+        <a
+          href="#"
+          routerLink="/weather"
+          [tabIndex]="-1"
+        >Weather</a></li>
     </ul>
   </nav>
 </header>

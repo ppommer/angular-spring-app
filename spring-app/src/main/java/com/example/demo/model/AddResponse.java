@@ -7,26 +7,20 @@ import java.util.UUID;
 public class AddResponse {
 
   private final UUID id;
-  private final String username;
   private final boolean alreadyExists;
 
-  public AddResponse(@JsonProperty("id") UUID id,
-              @JsonProperty("username") String username,
-              @JsonProperty("alreadyExists") boolean alreadyExists) {
+  public AddResponse(
+    @JsonProperty("id") UUID id,
+    @JsonProperty("alreadyExists") boolean alreadyExists) {
     this.id = id;
-    this.username = username;
     this.alreadyExists = alreadyExists;
   }
 
   public UUID getId() {
-    return id;
-  }
-
-  public String getUsername() {
-    return username;
+    return this.id;
   }
 
   public boolean getAlreadyExists() {
-    return alreadyExists;
+    return this.alreadyExists;
   }
 }

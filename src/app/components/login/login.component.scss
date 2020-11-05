@@ -21,6 +21,11 @@ mat-form-field {
   margin: 1.5em auto;
 }
 
+.green-button:active {
+  background: #006d46;
+  box-shadow: 0 0 20px darkgray;
+}
+
 .subtext {
   font-size: smaller;
 }
