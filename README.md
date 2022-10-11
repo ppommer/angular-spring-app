@@ -1,6 +1,6 @@
 # Angular Spring App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4 and [Spring Boot](https://spring.io/) version 2.3.4.
+Example web app for personal training purposes featuring an Angular frontend, a Spring Boot backend, an authentication framework, and access to different APIs. The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4 and [Spring Boot](https://spring.io/) version 2.3.4.
 
 ## Demo
 
